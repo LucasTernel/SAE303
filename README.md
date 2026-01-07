@@ -1,4 +1,4 @@
-﻿# SAE 303 - Visualisation de Données : Benchmark Solveurs SAT
+﻿# SAE 303 - Visualisation de Données : Données et Analyse ( D/A ).
 
 Ce projet a pour objectif de visualiser les résultats d'une campagne de tests de solveurs SAT (problèmes de satisfaction de contraintes). L'application prend la forme d'un tableau de bord web interactif permettant d'analyser les performances, les temps de résolution et la fiabilité des différents algorithmes.
 
@@ -91,4 +91,5 @@ Pour tester le projet localement (nécessaire pour charger le JSON via `fetch`) 
     * Avec Python : `python -m http.server 8000`
     * Avec Wamp/Xampp : Placer le dossier dans `www` ou `htdocs`.
 3.  Sinon ouvir en direct sans lancer de serveur Local
+
 

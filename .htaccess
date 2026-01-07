@@ -1,0 +1,12 @@
+# Activation du moteur de réécriture
+RewriteEngine On
+
+
+# Retirer l'extension .html et servir le fichier correspondant
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+
+
+
+

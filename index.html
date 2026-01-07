@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>D/A - Analyse Solveurs </title>
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
+  <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
+  <link id="stylessheet" href="assets/css/material-dashboard.css.map?v=3.2.0" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico"/>
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+  
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2  bg-white my-2" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand px-4 py-3 m-0" href="#">
+        <span class="ms-1 text-sm text-dark font-weight-bold">Données et Analyse ( D/A )</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active bg-gradient-dark text-white" href="index">
+            <i class="material-symbols-rounded opacity-5">dashboard</i>
+            <span class="nav-link-text ms-1">Tableau de bord</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="donnees_brutes">
+            <i class="material-symbols-rounded opacity-5">table_view</i>
+            <span class="nav-link-text ms-1">Données Brutes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="solvers">
+            <i class="material-symbols-rounded opacity-5">problem</i>
+            <span class="nav-link-text ms-1">Solvers</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="equipe">
+            <i class="material-symbols-rounded opacity-5">group</i>
+            <span class="nav-link-text ms-1">Équipe</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-3 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tableau de Bord Général</li>
+          </ol>
+        </nav>
+        
+      <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          </div>
+    </nav>
+    
+    <div class="container-fluid py-2">
+      <div class="row">
+        
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-2 ps-3">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="text-sm mb-0 text-capitalize">Problèmes Totaux</p>
+                  <h4 class="mb-0" id="kpi-total">-</h4>
+                </div>
+                <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                  <i class="material-symbols-rounded opacity-10">functions</i>
+                </div>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-2 ps-3">
+              <p class="mb-0 text-sm"><span class="text-success font-weight-bolder">100% </span> chargés</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-2 ps-3">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="text-sm mb-0 text-capitalize">Taux Résolution</p>
+                  <h4 class="mb-0" id="kpi-success">- %</h4>
+                </div>
+                <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                  <i class="material-symbols-rounded opacity-10">check_circle</i>
+                </div>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-2 ps-3">
+              <p class="mb-0 text-sm"><span class="text-success font-weight-bolder">SAT + UNSAT </span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-2 ps-3">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="text-sm mb-0 text-capitalize">Meilleur Solveur</p>
+                  <h4 class="mb-0" id="kpi-best" style="font-size: 1rem;">-</h4>
+                </div>
+                <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                  <i class="material-symbols-rounded opacity-10">emoji_events</i>
+                </div>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-2 ps-3">
+              <p class="mb-0 text-sm">Le plus efficace</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-6">
+          <div class="card">
+            <div class="card-header p-2 ps-3">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="text-sm mb-0 text-capitalize">Nb Solveurs</p>
+                  <h4 class="mb-0" id="kpi-solvers-count">-</h4>
+                </div>
+                <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                  <i class="material-symbols-rounded opacity-10">problem</i>
+                </div>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-2 ps-3">
+              <p class="mb-0 text-sm">En compétition</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        
+        <div class="col-lg-6 col-md-6 mt-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-0 ">Performance par Solveur</h6>
+              <p class="text-sm ">Nombre de problèmes résolus (SAT/UNSAT)</p>
+              <div class="pe-2">
+                <div class="chart">
+                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                </div>
+              </div>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+                <i class="material-symbols-rounded text-sm my-auto me-1">schedule</i>
+                <p class="mb-0 text-sm"> Campagne de test </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 mt-4 mb-4">
+          <div class="card ">
+            <div class="card-body">
+              <h6 class="mb-0 "> Répartition Globale </h6>
+              <p class="text-sm "> Proportion des résultats </p>
+              <div class="pe-2">
+                <div class="chart">
+                  <canvas id="chart-pie" class="chart-canvas" height="170"></canvas>
+                </div>
+              </div>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+                <i class="material-symbols-rounded text-sm my-auto me-1">pie_chart</i>
+                <p class="mb-0 text-sm"> Mis à jour </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <footer class="footer py-4">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © 2026, <i class="fa fa-code"></i> SAE Spé Développement Web.
+                <br>
+                Réalisé par <span class="font-weight-bold text-dark">Lucas Ternel</span> - MMI 2A1
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="https://lucasternel.com" class="nav-link text-muted" target="_blank">
+                    <i class="fa fa-globe me-1"></i> Mon Site
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.github.com/LucasTernel" class="nav-link text-muted pe-0" target="_blank">
+                    <i class="fab fa-github me-1"></i> GitHub
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src='assets/js/script.js'></script>
+<script src="assets/js/burger.js"></script>
+
+</body>
+</html>

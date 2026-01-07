@@ -50,15 +50,11 @@ Durant le développement, plusieurs défis techniques ont été relevés :
 * **Problème :** Le fichier `results.json` n'était pas un tableau plat d'objets, mais contenait des métadonnées (header, database info) aux index 0 et 1. Les données réelles étaient imbriquées dans `data[2].data`.
 * **Solution :** Implémentation d'une vérification au chargement du `fetch` pour cibler automatiquement le bon nœud de données, tout en gardant une compatibilité si le format changeait pour devenir standard.
 
-### 2. Incohérence des clés de données
-* **Problème :** Selon les versions du fichier, les clés changeaient (`nom_solveur` vs `name` ou `solver`, `statut` vs `status`).
-* **Solution :** Création d'un système de **détection dynamique des clés** au démarrage du script. Le code analyse la première ligne pour déterminer quelle clé utiliser (`hasOwnProperty`).
-
-### 3. Gestion du statut "UNSUPPORTED"
+### 2. Gestion du statut "UNSUPPORTED"
 * **Problème :** Certains jeux de données contenaient le statut "UNSUPPORTED" qui n'était pas prévu initialement, faussant les graphiques.
 * **Solution :** Ajout explicite de ce statut dans la logique de comptage et attribution d'une couleur spécifique (Orange) dans les graphiques et le tableau de données brutes.
 
-### 4. Menu Burger sur Mobile
+### 3. Menu Burger sur Mobile
 * **Problème :** Le menu latéral ne s'ouvrait pas sur mobile car les scripts JS du template original étaient trop lourds ou incomplets.
 * **Solution :** Développement d'un script léger `burger.js` dédié, qui gère l'ajout de la classe CSS `g-sidenav-pinned` et force l'animation CSS pour une ouverture fluide.
 
@@ -91,5 +87,6 @@ Pour tester le projet localement (nécessaire pour charger le JSON via `fetch`) 
     * Avec Python : `python -m http.server 8000`
     * Avec Wamp/Xampp : Placer le dossier dans `www` ou `htdocs`.
 3.  Sinon ouvir en direct sans lancer de serveur Local
+
 
 
